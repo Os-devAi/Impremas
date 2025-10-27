@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import ImpremasHero from '../Components/ImpremasHero';
 import ServicesSection from '../Components/ServicesSection';
 import ProductGallery from '../Components/ProductGallery';
+import ContactInfo from '../Components/ContactInfo';
 
 const Home = () => {
     const servicesRef = useRef(null);
@@ -19,6 +20,7 @@ const Home = () => {
             <div ref={servicesRef}>
                 <ServicesSection />
                 <ProductGallery />
+                <ContactInfo />
                 <br />
                 <div className='footer'>
                     Impremas 2025 by <a
