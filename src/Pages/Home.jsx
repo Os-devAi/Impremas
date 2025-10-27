@@ -19,6 +19,17 @@ const Home = () => {
             <div ref={servicesRef}>
                 <ServicesSection />
                 <ProductGallery />
+                <br />
+                <div className='footer'>
+                    Impremas 2025 by <a
+                        href="https://os-portfolio-plum.vercel.app/"
+                        target="_blank"
+                        rel=""
+                    >
+                        Nexus.Dev
+                    </a>
+                </div>
+                <br />
             </div>
         </>
     );
