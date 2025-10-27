@@ -79,6 +79,33 @@ const ServicesSection = () => {
         ? allServices
         : servicesData[activeCategory]?.items || [];
 
+    // Función para abrir WhatsApp
+    const openWhatsApp = (serviceType = 'general') => {
+        const phoneNumber = "50258734648"; // Reemplaza con tu número de WhatsApp
+        let message = "¡Hola! Me interesa conocer más sobre sus servicios de impresión.";
+
+        // Mensajes personalizados según el tipo de servicio
+        if (serviceType !== 'general') {
+            const category = servicesData[activeCategory]?.title || 'servicios';
+            message = `¡Hola! Me interesa obtener información sobre ${category}. ¿Podrían ayudarme con una cotización?`;
+        }
+
+        const encodedMessage = encodeURIComponent(message);
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+        window.open(whatsappUrl, '_blank');
+    };
+
+    // Función para abrir WhatsApp desde un servicio específico
+    const openWhatsAppForService = (serviceName) => {
+        const phoneNumber = "50258734648"; // Reemplaza con tu número de WhatsApp
+        const message = `¡Hola! Estoy interesado/a en el servicio de: ${serviceName}. ¿Podrían proporcionarme más información y cotización?`;
+        const encodedMessage = encodeURIComponent(message);
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+        window.open(whatsappUrl, '_blank');
+    };
+
     return (
         <section id="servicios" className="services-section">
             <div className="services-container">
@@ -124,9 +151,16 @@ const ServicesSection = () => {
                                 </div>
                                 <ul className="service-list">
                                     {category.items.map((service, index) => (
-                                        <li key={index} className="service-item">
+                                        <li
+                                            key={index}
+                                            className="service-item"
+                                            onClick={() => openWhatsAppForService(service)}
+                                        >
                                             <span className="service-bullet">•</span>
                                             {service}
+                                            <span className="whatsapp-icon" title="Consultar por WhatsApp">
+                                                💬
+                                            </span>
                                         </li>
                                     ))}
                                 </ul>
@@ -141,9 +175,16 @@ const ServicesSection = () => {
                             </div>
                             <div className="detail-services-grid">
                                 {servicesData[activeCategory].items.map((service, index) => (
-                                    <div key={index} className="detail-service-card">
+                                    <div
+                                        key={index}
+                                        className="detail-service-card"
+                                        onClick={() => openWhatsAppForService(service)}
+                                    >
                                         <div className="service-number">{String(index + 1).padStart(2, '0')}</div>
                                         <p className="service-text">{service}</p>
+                                        <div className="service-whatsapp">
+                                            <span className="whatsapp-badge">Consultar</span>
+                                        </div>
                                     </div>
                                 ))}
                             </div>
@@ -159,8 +200,18 @@ const ServicesSection = () => {
                             Contáctanos para cotizaciones personalizadas y soluciones a medida
                         </p>
                         <div className="cta-buttons">
-                            <button className="cta-btn primary">Solicitar Cotización</button>
-                            <button className="cta-btn secondary">Contactar por WhatsApp</button>
+                            {/* <button 
+                                className="cta-btn primary" 
+                                onClick={() => openWhatsApp('cotizacion')}
+                            >
+                                📋 Solicitar Cotización
+                            </button> */}
+                            <button
+                                className="cta-btn secondary"
+                                onClick={() => openWhatsApp('contacto')}
+                            >
+                                💬 Contactar por WhatsApp
+                            </button>
                         </div>
                     </div>
                 </div>

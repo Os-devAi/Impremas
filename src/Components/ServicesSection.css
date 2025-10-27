@@ -440,3 +440,104 @@
 .detail-service-card {
     animation: fadeInUp 0.6s ease-out;
 }
+
+/* Estilos para los elementos de WhatsApp */
+.service-item {
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.service-item:hover {
+    background: rgba(240, 135, 76, 0.05);
+    border-radius: 8px;
+    padding-left: 10px;
+    margin-left: -10px;
+}
+
+.whatsapp-icon {
+    opacity: 0;
+    margin-left: 8px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    position: absolute;
+    right: 10px;
+}
+
+.service-item:hover .whatsapp-icon {
+    opacity: 1;
+}
+
+/* Para las tarjetas de servicio detalladas */
+.detail-service-card {
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.detail-service-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--primary-orange);
+}
+
+.service-whatsapp {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.detail-service-card:hover .service-whatsapp {
+    opacity: 1;
+}
+
+.whatsapp-badge {
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Estilos para los botones de WhatsApp */
+.cta-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Efectos específicos para el botón de WhatsApp */
+.cta-btn.secondary:hover {
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    border-color: #25D366;
+    color: white;
+}
+
+/* Responsive para los iconos de WhatsApp */
+@media (max-width: 768px) {
+    .whatsapp-icon {
+        opacity: 1;
+        position: static;
+        margin-left: auto;
+    }
+
+    .service-whatsapp {
+        opacity: 1;
+    }
+
+    .service-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}

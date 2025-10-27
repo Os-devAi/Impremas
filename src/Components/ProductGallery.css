@@ -1,0 +1,519 @@
+/* ProductGallery.css - Diseño Mejorado Negro y Naranja */
+:root {
+    --primary-orange: #F0874C;
+    --orange-light: #F5A47C;
+    --orange-dark: #D96B32;
+    --black: #000000;
+    --dark-gray: #0a0a0a;
+    --medium-gray: #1a1a1a;
+    --light-gray: #2a2a2a;
+    --text-light: #e6e6e6;
+    --text-muted: #888888;
+}
+
+.product-gallery {
+    padding: 80px 20px;
+    background: var(--black);
+    position: relative;
+    overflow: hidden;
+}
+
+.product-gallery::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(circle at 20% 80%, rgba(240, 135, 76, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(240, 135, 76, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.gallery-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title {
+    font-size: 3rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--primary-orange), var(--orange-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+/* Grid Uniforme Mejorado */
+.uniform-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.grid-item {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    background: var(--medium-gray);
+    border: 1px solid rgba(240, 135, 76, 0.1);
+    backdrop-filter: blur(10px);
+    aspect-ratio: 4/3;
+}
+
+.grid-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(240, 135, 76, 0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 1;
+}
+
+.grid-item:hover::before {
+    opacity: 1;
+}
+
+.grid-item:hover {
+    transform: translateY(-8px);
+    border-color: rgba(240, 135, 76, 0.3);
+    box-shadow:
+        0 25px 50px rgba(240, 135, 76, 0.2),
+        0 0 0 1px rgba(240, 135, 76, 0.1);
+}
+
+.grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.grid-item:hover img {
+    transform: scale(1.08);
+}
+
+/* Grid Overlay */
+.grid-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 25px;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.95));
+    color: white;
+    transform: translateY(10px);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.grid-item:hover .grid-overlay {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.grid-category {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary-orange), var(--orange-light));
+    color: var(--black);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+
+.grid-overlay h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    color: white;
+}
+
+.grid-overlay p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin: 0;
+    line-height: 1.4;
+    opacity: 0.9;
+}
+
+/* Gallery CTA */
+.gallery-cta {
+    text-align: center;
+    padding: 40px;
+    background: var(--dark-gray);
+    border-radius: 20px;
+    border: 1px solid rgba(240, 135, 76, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.gallery-cta::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(240, 135, 76, 0.05) 0%, transparent 70%);
+    animation: rotate 20s linear infinite;
+}
+
+.gallery-cta p {
+    font-size: 1.3rem;
+    color: var(--text-light);
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.cta-button {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary-orange), var(--orange-light));
+    color: var(--black);
+    padding: 15px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 10px 25px rgba(240, 135, 76, 0.3),
+        0 0 0 2px rgba(240, 135, 76, 0.1);
+}
+
+/* Modal Mejorado - Imagen Completa */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.modal-content {
+    background: var(--dark-gray);
+    border-radius: 20px;
+    max-width: 90vw;
+    max-height: 90vh;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(240, 135, 76, 0.3);
+    box-shadow: 0 30px 60px rgba(240, 135, 76, 0.3);
+    display: flex;
+    flex-direction: column;
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.8);
+    border: none;
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 1.3rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-modal:hover {
+    background: var(--primary-orange);
+    color: var(--black);
+    transform: scale(1.1);
+}
+
+.modal-image-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--black);
+    min-height: 400px;
+    max-height: 70vh;
+    overflow: hidden;
+}
+
+.modal-content img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    max-height: 70vh;
+}
+
+.modal-info {
+    padding: 30px;
+    background: var(--dark-gray);
+    border-top: 1px solid rgba(240, 135, 76, 0.1);
+}
+
+.modal-category {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary-orange), var(--orange-light));
+    color: var(--black);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 15px;
+}
+
+.modal-info h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    margin: 0 0 15px 0;
+}
+
+.modal-info p {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Animations */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.grid-item {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.grid-item:nth-child(1) { animation-delay: 0.1s; }
+.grid-item:nth-child(2) { animation-delay: 0.2s; }
+.grid-item:nth-child(3) { animation-delay: 0.3s; }
+.grid-item:nth-child(4) { animation-delay: 0.4s; }
+.grid-item:nth-child(5) { animation-delay: 0.5s; }
+.grid-item:nth-child(6) { animation-delay: 0.6s; }
+.grid-item:nth-child(7) { animation-delay: 0.7s; }
+
+/* Responsive Design Mejorado */
+@media (max-width: 1200px) {
+    .uniform-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .section-title {
+        font-size: 2.5rem;
+    }
+    
+    .uniform-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .product-gallery {
+        padding: 60px 15px;
+    }
+
+    .uniform-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .section-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .grid-overlay {
+        padding: 20px;
+    }
+
+    .grid-overlay h3 {
+        font-size: 1.2rem;
+    }
+    
+    .modal-content {
+        max-width: 95vw;
+        max-height: 95vh;
+    }
+    
+    .modal-image-container {
+        min-height: 300px;
+        max-height: 60vh;
+    }
+    
+    .modal-content img {
+        max-height: 60vh;
+    }
+    
+    .modal-info {
+        padding: 20px;
+    }
+    
+    .modal-info h3 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .uniform-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .grid-item {
+        aspect-ratio: 16/9;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-gallery {
+        padding: 40px 10px;
+    }
+
+    .gallery-header {
+        margin-bottom: 40px;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .grid-overlay {
+        padding: 15px;
+    }
+
+    .grid-overlay h3 {
+        font-size: 1.1rem;
+    }
+
+    .gallery-cta {
+        padding: 30px 20px;
+    }
+
+    .gallery-cta p {
+        font-size: 1.1rem;
+    }
+
+    .modal-info h3 {
+        font-size: 1.3rem;
+    }
+    
+    .modal-info p {
+        font-size: 1rem;
+    }
+    
+    .close-modal {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+    }
+}
+
+/* Dark mode enhancements */
+@media (prefers-color-scheme: dark) {
+    .product-gallery {
+        background: var(--black);
+    }
+}
+
+/* High contrast support */
+@media (prefers-contrast: high) {
+    .grid-item {
+        border-color: var(--primary-orange);
+    }
+
+    .grid-overlay {
+        background: rgba(0, 0, 0, 0.95);
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .grid-item,
+    .grid-item:hover,
+    .grid-item img,
+    .grid-overlay {
+        transition: none;
+        animation: none;
+    }
+
+    .gallery-cta::before {
+        animation: none;
+    }
+}

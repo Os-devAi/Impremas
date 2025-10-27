@@ -27,6 +27,21 @@ const ImpremasHero = ({ onViewServices }) => {
         alert("Próximamente: Formulario de contacto");
     };
 
+    // Función para abrir WhatsApp
+    const openWhatsApp = (serviceType = 'general') => {
+        const phoneNumber = "50258734648"; // Reemplaza con tu número de WhatsApp
+        let message = "¡Hola! Me interesa conocer más sobre sus servicios de impresión.";
+
+        // Mensajes personalizados según el tipo de servicio
+
+        message = `¡Hola! Me interesa obtener información sobre algunos productos. ¿Podrían ayudarme con una cotización?`;
+
+        const encodedMessage = encodeURIComponent(message);
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+        window.open(whatsappUrl, '_blank');
+    };
+
     return (
         <section className="hero">
             <div className="hero-overlay"></div>
@@ -56,7 +71,7 @@ const ImpremasHero = ({ onViewServices }) => {
                         <div className="cta-buttons">
                             <button
                                 className="btn btn-primary"
-                                onClick={handleContactClick}
+                                onClick={openWhatsApp}
                             >
                                 Solicitar Cotización
                             </button>
